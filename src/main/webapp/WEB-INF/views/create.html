@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/layout :: head">
+    <meta charset="UTF-8">
+    <title>Create Customer</title>
+</head>
+<body>
+<h3>Add new Customer</h3>
+<p>
+    <a th:href="@{/customers}">
+        Back to customers list
+    </a>
+</p>
+<div id="form">
+    <form th:action="@{/customers/save}" th:object="${customer}" method="POST" novalidate="novalidate">
+<!--        - th:action chỉ ra đường dẫn sẽ xử lý submit form, ${customer} ở th:object chính là biến customer.-->
+        <input type="hidden" th:field="*{id}">
+        <div>
+            <label for="name">name</label>
+            <input type="text" id="name" th:field="*{name}">
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="text" id="email" th:field="*{email}">
+        </div>
+        <div>
+            <label for="address">Address</label>
+            <input type="text" id="address" th:field="*{address}">
+        </div>
+        <input type="submit" value="Save">
+    </form>
+</div>
+</body>
+<footer th:replace="/layout :: footer"></footer>
+</html>

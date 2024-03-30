@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/layout :: head">
+    <!--    - Gắn phần head và footer đã được khai báo trong file layout.html:-->
+    <meta charset="UTF-8">
+    <title>ListCustomer</title>
+</head>
+<body>
+<h3>Customer</h3>
+<p>
+    <a th:href="@{/customers/create}">
+        Add new Customers
+    </a>
+    <!--    - Thuộc tính th:href khai báo đường link trong thẻ a.-->
+</p>
+
+<table id="customers">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>View</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="row,rowStat : ${customers}">
+<!--        - Thuộc tính th:each tương ứng với câu lệnh for each.-->
+<!--        - Thuộc tính th:text dùng để đổ dữ liệu dưới dạng text vào thẻ HTML.-->
+<!--        - ${customers} là danh sách khách hàng sẽ được lặp, chính là model customers được controller truyền lên view.-->
+<!--        - row đại diện cho một khách hàng tại một bước lặp cụ thể.-->
+<!--        - rowStat là một biến trạng thái, giúp chúng ta theo dõi vòng lặp.-->
+<!--        - ${...} là biểu thức đánh giá các biến, biểu thức hay model.-->
+        <td th:text="${rowStat.count}"></td>
+        <td th:text="${row.getName()}"></td>
+        <td th:text="${row.getEmail()}"></td>
+        <td th:text="${row.getAddress()}"></td>
+        <td><a th:href="@{/customers/{id}/edit(id=${row.getId()})}">edit</a> </td>
+        <td><a th:href="@{/customers/{id}/delete(id=${row.getId()})}">delete</a> </td>
+        <td><a th:href="@{/customers/{id}/view(id=${row.getId()})}">view</a> </td>
+    </tr>
+    </tbody>
+    <div class="notify">
+        <div th:if="${success}">
+            <span th:text="${success}"></span>
+        </div>
+    </div>
+</table>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

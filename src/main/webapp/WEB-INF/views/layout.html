@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<!--khai báo thư viện -->
+<head th:fragment="head">
+<!--    head và footer sau dấu :: là các fragment selector, chính là giá trị của -->
+<!--    thuộc tính th:fragment của các thẻ head, footer trong trang layout.html-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Spring Customer</title>
+    <style>
+        h3{
+            background-color: blue;
+            color: white;
+            padding: 10px 0 10px 20px;
+            /*quy định khoảng cách giữa content và border*/
+            /*theo thứ tự là trên phải dưới trái*/
+        }
+
+        footer{
+            margin: 10px 0;
+            /*margin được sử dụng để tạo không gian xung quanh các phần tử, bên ngoài bất kỳ đường viền xác định nào.*/
+        }
+
+        #customers {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            /*Thuộc tính border-collapse đặt đường viền bảng sẽ thu gọn thành*/
+            /*một đường viền duy nhất hay được tách riêng như trong HTML tiêu chuẩn.*/
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            /*Thuộc tính border CSS cho phép bạn chỉ định kiểu, chiều rộng và màu */
+            /*của đường viền của một phần tử.*/
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            /*Thuộc tính text-align chỉ định việc căn chỉnh văn bản theo chiều ngang trong một phần tử.*/
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        input[type=text], input[type=email]{
+            width: 100%;
+            padding: 12px 0;
+            margin: 8px 0;
+            display: inline-block;
+            /*Thuộc tính display chỉ định hành vi hiển thị (loại hộp kết xuất) của một phần tử.*/
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            /*Thuộc tính border-radius xác định bán kính các góc của phần tử.*/
+            box-sizing: border-box;
+            /*Thuộc tính box-sizing xác định cách tính chiều rộng và chiều cao của một phần tử:*/
+            /*    chúng có bao gồm phần đệm và đường viền hay không*/
+        }
+
+        input[type=submit]{
+            width: 300px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            /*Thuộc tính cursor chỉ định con trỏ chuột sẽ được hiển thị khi trỏ qua một phần tử.*/
+            text-align: center;
+        }
+
+        input[type=submit]:hover{
+            background-color: #45a049;
+        }
+
+        #form {
+            width: 500px;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        .notify span{
+            font-size: 15px;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<footer th:fragment="footer">
+    &copy; NhatNguyen
+</footer>
+</body>
+</html>
